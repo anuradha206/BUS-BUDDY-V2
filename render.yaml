@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: bus-buddy-project
+    env: python
+    plan: free
+    buildCommand: bash build.sh
+    startCommand: cd busbuddy && gunicorn busbuddy.wsgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_CSRF_TRUSTED_ORIGINS
+        value: https://*.onrender.com

@@ -1,0 +1,120 @@
+{% extends 'main/base.html' %}
+{% block title %}BusBuddy | Bus Booking System{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow">Bus booking project</p>
+      <h1 class="hero-title">A simple way to find buses and manage routes.</h1>
+      <p class="hero-text">
+        BusBuddy is a Django web app for route search, bus registration, bookings, and a simulated payment flow.
+        It is built as a practical college project with passenger and conductor workflows.
+      </p>
+      <div class="hero-ctas">
+        <a class="btn primary" href="{% url 'search' %}">Search buses</a>
+        <a class="btn ghost" href="{% url 'register_bus' %}">Register a bus</a>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <strong>Routes</strong>
+          <span>Search by city, stop, day, and date</span>
+        </div>
+        <div class="stat">
+          <strong>Seats</strong>
+          <span>Availability updates after bookings</span>
+        </div>
+        <div class="stat">
+          <strong>Dashboards</strong>
+          <span>Passenger and conductor views</span>
+        </div>
+      </div>
+    </div>
+
+    <aside class="hero-photo" aria-label="Bus journey preview">
+      <img
+        src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80"
+        alt="Bus travelling on a road"
+      >
+      <div class="journey-card">
+        <span class="badge">Demo route</span>
+        <h3>Meerut to Kanpur</h3>
+        <p>Campus Express | Mon, Fri | 08:30 departure</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="quick-search-wrap">
+  <div class="container">
+    <form class="quick-search" action="{% url 'search_results' %}" method="get">
+      <div>
+        <label for="home-source">From</label>
+        <input id="home-source" name="source" value="Meerut" placeholder="Source city">
+      </div>
+      <div>
+        <label for="home-destination">To</label>
+        <input id="home-destination" name="destination" value="Kanpur" placeholder="Destination city">
+      </div>
+      <div>
+        <label for="home-day">Day</label>
+        <select id="home-day" name="Day">
+          <option value="Monday">Monday</option>
+          <option value="Friday">Friday</option>
+          <option value="">Any day</option>
+        </select>
+      </div>
+      <button class="btn primary" type="submit">Try demo search</button>
+    </form>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">What you can show in the demo</h2>
+      <p class="section-text">The project is intentionally simple, but it covers a complete backend workflow.</p>
+    </div>
+
+    <div class="feature-list">
+      <article>
+        <h3>Passenger search</h3>
+        <p>Search by source, destination, date, operating day, AC type, seating type, and driver information.</p>
+      </article>
+      <article>
+        <h3>Bus registration</h3>
+        <p>Conductors can add route details, stops, timings, total seats, and weekly or date-based schedules.</p>
+      </article>
+      <article>
+        <h3>Booking workflow</h3>
+        <p>The app creates bookings, calculates available seats, simulates payment, and stores booking history.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section story-section">
+  <div class="container story-grid">
+    <div>
+      <img
+        src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=900&q=80"
+        alt="Bus at a station"
+      >
+    </div>
+    <div>
+      <p class="eyebrow">How it works</p>
+      <h2 class="section-title">Built around two real users</h2>
+      <p class="section-text">
+        A passenger searches and books a seat. A conductor creates a route and keeps track of schedules.
+        This makes the project easy to explain in a viva because every model has a clear purpose.
+      </p>
+      <ul class="plain-list">
+        <li>Login and registration are handled by Django authentication.</li>
+        <li>Routes, stops, schedules, bookings, and payments are stored as models.</li>
+        <li>Templates render the pages directly from backend data.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+{% endblock %}
